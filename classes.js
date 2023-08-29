@@ -78,13 +78,22 @@ class Stage {
 
     start() {
         this.update();
+        
+        this.fighter1El.querySelector('.attackButton').addEventListener('click', () => this.doAttack(this.fighter1, this.fighter2))
+        this.fighter2El.querySelector('.attackButton').addEventListener('click', () => this.doAttack(this.fighter2, this.fighter1))
     }
     update() {
         // Fighter1
-        this.fighter1El.querySelector('.name').innerHTML = this.fighter1.name;
+        this.fighter1El.querySelector('.name').innerHTML = `${this.fighter1.name} - ${this.fighter1.life}`
+        let f1Pct = (this.fighter1.life / this.fighter1.maxLife) * 100;
+        this.fighter1El.querySelector('.bar').style.width = `${f1Pct}%`;
 
         // Fighter2
-        this.fighter2El.querySelector('.name').innerHTML = this.fighter2.name;
-
+        this.fighter2El.querySelector('.name').innerHTML = `${this.fighter2.name} - ${this.fighter2.life}`
+        let f2Pct = (this.fighter2.life / this.fighter2.maxLife) * 100;
+        this.fighter2El.querySelector('.bar').style.width = `${f2Pct}%`;
+    }
+    doAttack(attacking, attacked){
+        console.log(`${attacking.name} esta atacando o ${attacked.name}`);
     }
 }

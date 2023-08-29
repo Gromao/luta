@@ -10,7 +10,7 @@ class Character {
     }
 
     get life() {
-        return this.life //Para consultar qual o valor de life (nome do lutador.life)
+        return this._life //Para consultar qual o valor de life (nome do lutador.life)
     }
 
     set life(newLife) {
@@ -73,7 +73,7 @@ class Stage {
         this.fighter1 = fighter1;
         this.fighter2 = fighter2;
         this.fighter1El = fighter1El;
-        this.fighter2 = fighter2El;
+        this.fighter2El = fighter2El;
     }
 
     start() {

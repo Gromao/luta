@@ -94,6 +94,7 @@ class Stage {
         this.fighter2El.querySelector('.bar').style.width = `${f2Pct}%`;
     }
     doAttack(attacking, attacked){
-        console.log(`${attacking.name} esta atacando o ${attacked.name}`);
+        
+        document.querySelector('.log').innerHTML = `${attacking.name} esta atacando o ${attacked.name}`;
     }
 }

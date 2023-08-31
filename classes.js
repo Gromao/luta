@@ -78,7 +78,7 @@ class Stage {
 
     start() {
         this.update();
-        
+
         this.fighter1El.querySelector('.attackButton').addEventListener('click', () => this.doAttack(this.fighter1, this.fighter2))
         this.fighter2El.querySelector('.attackButton').addEventListener('click', () => this.doAttack(this.fighter2, this.fighter1))
     }
@@ -93,8 +93,18 @@ class Stage {
         let f2Pct = (this.fighter2.life / this.fighter2.maxLife) * 100;
         this.fighter2El.querySelector('.bar').style.width = `${f2Pct}%`;
     }
-    doAttack(attacking, attacked){
-        
-        document.querySelector('.log').innerHTML = `${attacking.name} esta atacando o ${attacked.name}`;
+    doAttack(attacking, attacked) {
+
+        if (attacking.life == 0 || attacked.life == 0) {
+            console.log("Faliceu")
+            return;
+        }
+        let attakcFactor = (Math.random() * 2).toFixed(2);
+        let actualAttack = attacking.attack * attakcFactor;
+
+        attacked.life = attacked.life - actualAttack;
+
+
+        this.update();
     }
 }
